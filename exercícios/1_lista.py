@@ -8,3 +8,16 @@ print("Valores modificados: ", numbers)
 
 numbers[3-2] = numbers[4]
 print("Valores modificados 2: ", numbers)
+
+lista = ["nested", 'list']
+numbers.append(lista)
+print(numbers)
+
+del lista
+
+print(numbers)
+
+del numbers[:]
+
+print(numbers)
+
