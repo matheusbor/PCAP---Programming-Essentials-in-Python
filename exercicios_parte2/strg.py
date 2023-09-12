@@ -1,0 +1,4 @@
+multi = """
+
+"""
+print(len(multi))
