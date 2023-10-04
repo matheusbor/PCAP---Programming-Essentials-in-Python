@@ -13,16 +13,16 @@ class Stack:
 
 class CountingStack(Stack):
     def __init__(self):
-    Stack.__init__(self)
-    self.__counter = 0 #precisamos inicializar ela no construtor para o objeto inicializar quando for criado
+        Stack.__init__(self)
+        self.__counter = 0 #precisamos inicializar ela no construtor para o objeto inicializar quando for criado
 
     def get_counter(self):
-    return self.__counter
+        return self.__counter
 
     def pop(self):
-        for i in range(len(Stack.__stk)):
-            
-        
+        self.__counter += 1 #nem precisou de for cada vez q chamar a função pop vai incrementar
+        Stack.pop(self)  #só chamei a função ja implementada na superclasse
+         
 	
 
 stk = CountingStack()
