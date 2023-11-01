@@ -6,6 +6,15 @@ class Timer:
     def __str__(self):
         if self._Timer.__seconds >= 3600:
             self._Timer.__hours = self._Timer.__seconds // 3600
+            self._Timer.__seconds -= self._Timer.__hours * 3600
+        elif self._Timer.__seconds >= 60:
+            self._Timer.__minutes = self._Timer.__seconds // 60
+            self._Timer.__seconds -= self._Timer.__minutes * 60
+        
+        if self._Timer.__hours < 10:
+            self._Timer.__hours = "0" + str(self._Timer.__hours)
+        
+        return self._Timer.__hours + ":" + str(self._Timer.__minutes) + ":" + str(self._Timer.__seconds)
 
     def next_second(self):
         #
