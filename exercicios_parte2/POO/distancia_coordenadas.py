@@ -23,10 +23,10 @@ class Point:
 
     def distance_from_point(self, point):
         #__intermediario = [point.__coordenada[0], self.__coordenada[1]]
-        __a = self.__coordenada[0] - point.__coordenada[0]
+        __a = self.__coordenada[0] - point._Point__coordenada[0]
         __a = tratar_negativo(__a)
         
-        __b = self.__coordenada[1] - point.__coordenada[1]
+        __b = self.__coordenada[1] - point._Point__coordenada[1]
         __b = tratar_negativo(__b)
         
         return (__a*__a + __b * __b)**0.5
@@ -34,8 +34,10 @@ class Point:
 def tratar_negativo(x):
     if x < 0:
         return x * -1
+    return x #se eu não retorno um valor para a segunda condição como eu to atribuindo, retorna implicitamente void
         
 point1 = Point(0, 0)
+#print(point1._Point__coordenada[0])
 point2 = Point(1, 1)
 print(point1.distance_from_point(point2))
 print(point2.distance_from_xy(2, 0))
