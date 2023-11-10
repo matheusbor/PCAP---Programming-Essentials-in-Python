@@ -5,8 +5,14 @@ class Pessoa:
         Pessoa.população += 1
         self.name = nome
         self.__age = 20
+        self.__stk = []
     def __teste(self):
         Pessoa.olhos = 'green'
+    def teste3(self):
+        return "teste"
+    def teste4(self):
+        self.__stk.append(1)
+        return self.__stk
 
 class Individuo(Pessoa):
     '''
@@ -21,5 +27,7 @@ class Individuo(Pessoa):
 
 trabalhador = Individuo("marcos")
 
-print(Pessoa.população, Pessoa._Pessoa__saude, trabalhador.name, trabalhador._Pessoa__age, sep = "\t")
+print(Pessoa.população, Pessoa._Pessoa__saude, trabalhador.população, sep = "\t")#variaveis de classe
+print( trabalhador.teste3(), trabalhador.teste4(), sep = "\t")#metodos
+print(trabalhador.name, trabalhador._Pessoa__age, sep = "\t")#variaveis de instancia
 trabalhador.teste2()
