@@ -11,8 +11,7 @@ modifica.close()
 ler = open("exercicios_parte2\\manipulação_arquivos\\zen_do_python.txt", "r", encoding= "utf-8")
 for i in ler:
     print(i)
-print(modifica)
-
+ler.close()
 
 
 '''modifica.write(- O Zen do Python é uma coleção de princípios, para escrever programas de computador que influenciam o design da linguagem de programação Python.
