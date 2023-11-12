@@ -3,5 +3,4 @@ def primos(numero):
         if i % 2 != 0:
             yield i
 
-
-print("Cinquenta primos: ", list(primos(100)))
+print("Cinquenta primos: ", list(primos(50)))
