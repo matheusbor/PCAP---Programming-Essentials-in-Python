@@ -2,25 +2,10 @@ from os import strerror
 
 
 def ordem_frequencia(dicionario):
-    alfabeto = list(dicionario.keys())
-  #  print("alfabeto", alfabeto)
-    frequencias = []
-    for key in alfabeto:
-        frequencias.append(dicionario[key])
-   # print("frequencias", frequencias)
+    lista = sorted(dicionario.items(), key =  lambda item: item[1], reverse = True)
 
-    lista = []
-    maximo = 0
-    while maximo > -1:
-        for i in range(len(alfabeto)):
-            maximo = max(frequencias)
-            if frequencias[i] == maximo and alfabeto[i] not in lista:
-                lista.append(alfabeto[i])
-                frequencias[i] = -99
-        #print("lista", lista)
-       # print("frequencias", frequencias)
-    
-   # print("lista", lista)
+    for i in range(len(lista)):
+        lista[i] = lista[i][0]
     return lista
 
 
@@ -30,6 +15,23 @@ def printar_keys(lista, dicionario):
         print(letter, "->",dicionario[letter])
         strg += letter + " -> " + str(dicionario[letter]) + "\n"
     return strg
+
+''' opção com uso de lambda e sorted
+def ordem_frequencia(dicionario):
+    lista = sorted(dicionario.items(), key =  lambda item: item[1], reverse = True)
+
+    for i in range(len(lista)):
+        lista[i] = lista[i][0]
+    return lista
+
+
+def printar_keys(lista, dicionario):
+    strg = ""
+    for letter in lista:
+        print(letter, "->",dicionario[letter])
+        strg += letter + " -> " + str(dicionario[letter]) + "\n"
+    return strg
+    '''
     
 
 
