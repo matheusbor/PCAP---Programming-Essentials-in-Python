@@ -19,7 +19,7 @@ def printar_keys(lista, dicionario):
 ''' opção com uso de lambda e sorted
 def ordem_frequencia(dicionario):
     lista = sorted(dicionario.items(), key =  lambda item: item[1], reverse = True)
-
+    #fala que vai usar o par chave valor para ordenar e a chave de sorted usa o lambda para indicar que só vai ordenar pelo segundo valor
     for i in range(len(lista)):
         lista[i] = lista[i][0]
     return lista
