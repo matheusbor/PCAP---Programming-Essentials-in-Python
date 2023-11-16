@@ -3,7 +3,7 @@ from os import strerror
 
 def ordem_alfabetica(dicionario):
     alfabeto = list(dicionario.keys())
-    
+    print(alfabeto)
     strg = "abcdefghijklmnopqrstuvxwyz"
     strg2 = strg.upper()
     posicao = []
@@ -14,7 +14,7 @@ def ordem_alfabetica(dicionario):
             if posicao[i] == -1:
                 posicao[i] = strg2.find(letter)
         i += 1
-    
+    print("posicao", posicao)
     lista = []
     for i in range(len(alfabeto)):
         minimo = min(posicao)
