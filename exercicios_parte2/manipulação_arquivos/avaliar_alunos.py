@@ -34,36 +34,91 @@ def ordem_alfabetica(dicionario):
     strg = "abcdefghijklmnopqrstuvxwyz"
     strg2 = strg.upper()
     posicao = []
-    i = 0
-    for j in 
-    for letter in alfabeto[i]:#vai ordenar apenas pela primeira letra
-        if letter in strg or letter in strg2:
-            posicao.insert(i, strg.find(letter))
-            if posicao[i] == -1:
-                posicao[i] = strg2.find(letter)
-        i += 1
-    print("posicao", posicao)
-    lista = []
     for i in range(len(alfabeto)):
+        posicao.append([])
+    print("posicao", posicao)
+    i = 0
+    for j in range(len(alfabeto)):#acha as posições de cada caracter em cada nome
+        if i >= 3:
+            i = 0
+        for letter in alfabeto[j]:
+            if letter in strg or letter in strg2:
+                posicao[j].insert(i, strg.find(letter))
+                if posicao[j][i] == -1:
+                    posicao[j][i] = strg2.find(letter)
+            i += 1
+    print("posicao", posicao)
+
+    lista = []
+    '''for i in range(len(alfabeto)):
         minimo = min(posicao)
         if posicao[i] == minimo:
             lista.append(alfabeto[i])
-            posicao[i] = 99
+            posicao[i] = 99'''
+    ordem = [0,0,0]
+    #preciso fazer a ordem de cada item das sublistas
+    for i in range(len(alfabeto) - 1):
+        ordem[i] = 0
+        ordem[i + 1] = 0
+        for j in range(len(alfabeto)):
+            if posicao[i][j] in posicao and posicao [i+1][j] in posicao:
+
+                if posicao[i][j] == posicao[i + 1][j]:
+                    continue
+                if posicao[i][j] < posicao[i + 1][j]:
+                    ordem[i] += 1
+                elif posicao[i + 1][j] < posicao[i][j]:
+                    ordem[i + 1] += 1
+
+        if ordem[i] > ordem[i + 1]:
+            maior = i
+            ordem[i + 2] = 0
+            for j in range(len(alfabeto)):
+                if posicao[i][j] in posicao and posicao [i+2][j] in posicao:
+
+                    if posicao[i][j] == posicao[i + 2][j]:
+                        continue
+                    if posicao[i][j] < posicao[i + 2][j]:
+                        ordem[i] += 1
+                    elif posicao[i + 2][j] < posicao[i][j]:
+                        ordem[i + 2] += 1
+
+        elif ordem[i+ 1] > ordem[i]:
+            maior = i + 1
+            ordem[i + 2] = 0
+            for j in range(len(alfabeto)):
+                if posicao[maior][j] in posicao and posicao [i+2][j] in posicao:
+
+                    if posicao[maior][j] == posicao[i + 2][j]:
+                        continue
+                    if posicao[maior][j] < posicao[i + 2][j]:
+                        ordem[maior] += 1
+                    elif posicao[i + 2][j] < posicao[maior][j]:
+                        ordem[maior + 2] += 1
+        print(ordem)
     return lista
 
 def print_ordenado(dicionario):
     lista = ordem_alfabetica(dicionario)
     print("lista", lista)
     j = 0
+    achado = False
     while j < len(alunos.keys()):
+        achado = False
+        print("j", j)
         for i in alunos.keys():
+            if achado:
+                break
             for key in alunos[i].keys():
                 if alunos[i]['name'] == lista[j]:
                     print(alunos[i]['name'], end = " ")
                     print(alunos[i]['last_name'], end = "\t\t")
                     print(alunos[i]['nota'])
                     j += 1
-
+                    achado = True
+                if achado:
+                    break
+        
 
 
 name = input("Digite o nome do arquivo: ")
