@@ -1,14 +1,20 @@
 class StudentsDataException(Exception):
-    pass
+    def __init__(self, message = "Houve um erro nos dados dos estudantes"):
+        Exception.__init__(self, message)
+
+
 
 
 class BadLine(StudentsDataException):
-    # Write your code here.
+    def __init__(self, message = "A linha não está nos padrões do código"):
+        StudentsDataException.__init__(self, message)
+
     pass
 
 
 class FileEmpty(StudentsDataException):
-    pass
+    def __init__(self, message = "O arquivo selecionado está vazio"):
+        StudentsDataException.__init__(self, message)
 
 def verifica_existencia(name):
     existencia = False
@@ -57,45 +63,7 @@ def ordem_alfabetica(dicionario):
             posicao[i] = 99'''
     ordem = [0,0,0]
     #preciso fazer a ordem de cada item das sublistas
-    for i in range(len(alfabeto) - 1):
-        ordem[i] = 0
-        ordem[i + 1] = 0
-        for j in range(len(alfabeto)):
-            if posicao[i][j] in posicao and posicao [i+1][j] in posicao:
-
-                if posicao[i][j] == posicao[i + 1][j]:
-                    continue
-                if posicao[i][j] < posicao[i + 1][j]:
-                    ordem[i] += 1
-                elif posicao[i + 1][j] < posicao[i][j]:
-                    ordem[i + 1] += 1
-
-        if ordem[i] > ordem[i + 1]:
-            maior = i
-            ordem[i + 2] = 0
-            for j in range(len(alfabeto)):
-                if posicao[i][j] in posicao and posicao [i+2][j] in posicao:
-
-                    if posicao[i][j] == posicao[i + 2][j]:
-                        continue
-                    if posicao[i][j] < posicao[i + 2][j]:
-                        ordem[i] += 1
-                    elif posicao[i + 2][j] < posicao[i][j]:
-                        ordem[i + 2] += 1
-
-        elif ordem[i+ 1] > ordem[i]:
-            maior = i + 1
-            ordem[i + 2] = 0
-            for j in range(len(alfabeto)):
-                if posicao[maior][j] in posicao and posicao [i+2][j] in posicao:
-
-                    if posicao[maior][j] == posicao[i + 2][j]:
-                        continue
-                    if posicao[maior][j] < posicao[i + 2][j]:
-                        ordem[maior] += 1
-                    elif posicao[i + 2][j] < posicao[maior][j]:
-                        ordem[maior + 2] += 1
-        print(ordem)
+    lista = sorted(alfabeto)
     return lista
 
 def print_ordenado(dicionario):
@@ -105,7 +73,7 @@ def print_ordenado(dicionario):
     achado = False
     while j < len(alunos.keys()):
         achado = False
-        print("j", j)
+        #print("j", j)
         for i in alunos.keys():
             if achado:
                 break
@@ -130,13 +98,13 @@ i = 0
 while character != "":
     if i != 0:
         character = ler.read(1)
-    #print(alunos)
+
     nome = ""
 
     while character != " " and character != '\t':
         nome += character
         character = ler.read(1)
-        #i+= 1
+
     if not verifica_existencia(nome):
         alunos['aluno' + str(i)] = {}
         alunos['aluno' + str(i)]['name'] = ""
@@ -147,13 +115,12 @@ while character != "":
             character = ler.read(1)
 
         while character != " " and character != '\t':
-            #alunos['aluno' + str(i)]['last_name'] += character pois ele já existe
             character = ler.read(1)
 
         while character == " " or character == '\t':
             character = ler.read(1)
     
-        index_aluno = procura_aluno(nome)#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        index_aluno = procura_aluno(nome)
         nota = float(alunos[index_aluno]['nota'])
         alunos[index_aluno]['nota'] = ""
 
@@ -163,11 +130,6 @@ while character != "":
 
         nota += float(alunos[index_aluno]['nota'])
         alunos[index_aluno]['nota'] = str(nota)
-
-        '''while character != "\n":
-            alunos[index_aluno]['nota'] += character#iiiiiiiii
-            character = ler.read(1)'''
-
         i += 1
         continue
     
@@ -183,15 +145,13 @@ while character != "":
     while character == " " or character == '\t':
         character = ler.read(1)
 
-    #print(alunos)
-    #print("caracter",character)
+
     while character != "\n":
         alunos['aluno' + str(i)]['nota'] += character
         character = ler.read(1)
         if character == '':
             break
 
-    #print(i)
     i += 1
 ler.close()
 '''except BaseException as b:
