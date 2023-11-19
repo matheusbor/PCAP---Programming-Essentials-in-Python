@@ -39,9 +39,13 @@ def find(path = "./", dir = "", recursao = False):
 
     if dir in arquivos:
         os.chdir(dir)
-        return os.getcwd()
+        path = os.getcwd()
+        os.chdir("C:\\Users\\mathe\\Desktop\\vscode\\Github\\netacad\\exercicios_parte2\\módulos")#precisa voltar o caminho
+        return path
     else:
         return find(str(os.getcwd()), dir, True)
 
 
 print(find("tree\cpp\other_courses\c", "cpp"))
+
+print(find("./tree", "python"))
