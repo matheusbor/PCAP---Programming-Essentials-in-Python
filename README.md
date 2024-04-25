@@ -1,2 +1,2 @@
 # Curso da cisco, disponível na Netacad
- Exercícios do curso PCAP - Programming Essentials in Python
+ Gabarito dos exercícios do curso PCAP - Programming Essentials in Python
